@@ -4,16 +4,24 @@
 #include <iostream>
 int main()
 {
-    std::string texte = "Toto, Tata";
+  char input[100];
+  std::cin.getline(input,sizeof(input));
+
     // change les minuscules par des majuscules et réciproquement
-    for (char & c : texte)
+  //for (int i=1; i< argc; i++)
     {
-        if (std::islower(c))
+      int k=0; 
+      while(input[k] != 0/*argv[i][k]*/) {
+	char &c = input[k];//argv[i][k];
+	if (std::islower(c))
             std::cout << char(std::toupper(c));
         else if (std::isupper(c))
             std::cout << char(std::tolower(c));
         else 
             std::cout << c;
+	k++;
+      }
     }
+  std::cout << "\n";
     return 0;
 }
